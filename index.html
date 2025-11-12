@@ -58,6 +58,42 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* === LOADER === */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    #loader h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      margin: 0;
+      color: #eaf2ff;
+      animation: fadeIn 1.5s ease forwards;
+    }
+    #loader p {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #bfc9d6;
+      letter-spacing: 2px;
+      animation: fadeIn 2s ease forwards;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
     .nav {
       height:var(--nav-h);
       position:fixed; top:0; left:0; right:0;
@@ -230,6 +266,12 @@
 </head>
 
 <body>
+  <!-- === LOADER === -->
+  <div id="loader">
+    <h1>V o y d e</h1>
+    <p>Everything from Nothing</p>
+  </div>
+
   <div class="bg-animated"></div>
 
   <header class="nav">
@@ -269,7 +311,7 @@
     <section class="hero">
       <div class="hero-card">
         <h1>Welcome to Voyde</h1>
-        <p>We craft brands, design stories, and build digital experiences that turn ideas into emotion.<br><strong>Everything from Nothing.</strong></p>
+        <p>Crafting brands, design stories, and build digital experiences that turn ideas into emotion.<br><strong>Everything from Nothing.</strong></p>
         <div class="btn-row">
           <a href="#services" class="btn btn-primary">Our Services</a>
           <a href="#nixie" class="btn btn-ghost">Nixie — Coming Soon</a>
@@ -291,24 +333,24 @@
       <h2 class="section-title">Our Services</h2>
       <div class="projects">
         <div class="project">
-          <h3>Logo Design & Brand Identity</h3>
+          <h3>Branding & Re-Branding</h3>
           <p>Timeless visual systems that define how your brand looks, feels, and speaks.</p>
         </div>
         <div class="project">
-          <h3>Social Media Strategy & Meta Ads</h3>
+          <h3>Advertising Strategy</h3>
           <p>Growth-focused campaigns and visual assets that perform and engage.</p>
         </div>
         <div class="project">
-          <h3>Landing Pages (Figma / Webflow)</h3>
-          <p>Cinematic web experiences crafted for clarity, emotion, and conversion.</p>
+          <h3>Landing pages (website)</h3>
+          <p>Web Pages crafted for commercial benefits and Marketing</p>
         </div>
         <div class="project">
-          <h3>Product Branding & Campaigns</h3>
+          <h3>Product campaigns</h3>
           <p>Launching products with vision, positioning, and storytelling direction.</p>
         </div>
         <div class="project">
-          <h3>Marketing Videos & Promos</h3>
-          <p>Short-form storytelling that makes people stop, feel, and remember.</p>
+          <h3>Marketing digital resources</h3>
+          <p>Short-form storytelling that makes people and customers to engage and relate with your product</p>
         </div>
       </div>
     </section>
@@ -321,33 +363,41 @@
     <!-- === Added Team Section === -->
     <section id="team" class="reveal">
       <h2 class="section-title">Our Team</h2>
-      <p class="lead">Meet the people behind Voyde — dreamers, designers, and doers who make everything from nothing.</p>
+      <p class="lead">Meet the people behind Voyde — who make everything from nothing.</p>
       <div class="team-grid">
         <div class="team-member">
           <img src="https://media.licdn.com/dms/image/v2/D5603AQFq0yZIk16WBQ/profile-displayphoto-crop_800_800/B56Zp4n2JGI4AI-/0/1762960303277?e=1764806400&v=beta&t=3N3BRWzKetRxrNagmzMPOJejpECCEwa2v3YgguyIZAc" alt="Rithan">
           <h4>Rithan</h4>
-          <p>Founder & Creative Director</p>
+          <p>Founder / Managing Director</p>
         </div>
         <div class="team-member">
           <img src="https://media.licdn.com/dms/image/v2/D5603AQFYLVZ3B24mzw/profile-displayphoto-crop_800_800/B56Zp4oKT7KEAM-/0/1762960387402?e=1764806400&v=beta&t=h1Om80w21_sVBFZLQNlsfsZJ9JJ1jiIpd8wKxmmuP-A" alt="Rithika">
           <h4>Rithika</h4>
-          <p>Co-Founder & Brand Strategist</p>
+          <p>Co-Founder / Director of Administration</p>
         </div>
         <div class="team-member">
           <img src="https://via.placeholder.com/200x200.png?text=Alex" alt="Arun">
           <h4>Arun</h4>
-          <p>Creative & Operations Consultant</p>
+          <p>Cheif Consultant</p>
         </div>
       </div>
     </section>
     <!-- === End Team Section === -->
 
     <footer class="reveal">
-      © 2025 Voyde • Rithan (Founder) • Rithika (Co Founder)
+      © 2025 Voyde 
     </footer>
   </main>
 
   <script>
+    // LOADER
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      setTimeout(() => {
+        loader.classList.add("hidden");
+      }, 2000); // loader visible for 2 seconds
+    });
+
     // Theme toggle
     (()=>{
       const root=document.documentElement,btn=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon');
