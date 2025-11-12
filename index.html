@@ -58,7 +58,6 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-
     .nav {
       height:var(--nav-h);
       position:fixed; top:0; left:0; right:0;
@@ -192,6 +191,41 @@
       .hero-card { padding:30px 20px; }
       .project { padding:16px; }
     }
+
+    /* === Added Team Section Styles === */
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .team-member {
+      text-align: center;
+      max-width: 200px;
+    }
+    .team-member img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--glass-border);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .team-member img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--accent);
+    }
+    .team-member h4 {
+      margin: 12px 0 4px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .team-member p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin: 0;
+    }
   </style>
 </head>
 
@@ -210,6 +244,7 @@
           <a href="#vision">Vision</a>
           <a href="#services">Services</a>
           <a href="#nixie">Nixie</a>
+          <a href="#team">Team</a>
         </div>
         <button class="theme-toggle" id="themeToggle">
           <svg id="themeIcon" viewBox="0 0 24 24" fill="none" width="18" height="18">
@@ -226,6 +261,7 @@
       <a href="#vision">Vision</a>
       <a href="#services">Services</a>
       <a href="#nixie">Nixie</a>
+      <a href="#team">Team</a>
     </div>
   </header>
 
@@ -282,8 +318,32 @@
       <p class="lead">A social media experience built by Voyde — a space for thoughts, feelings, and connection. Reimagined from the ground up.<br><strong>Coming soon.</strong></p>
     </section>
 
+    <!-- === Added Team Section === -->
+    <section id="team" class="reveal">
+      <h2 class="section-title">Our Team</h2>
+      <p class="lead">Meet the people behind Voyde — dreamers, designers, and doers who make everything from nothing.</p>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="https://github.com/voydecompany/Voyde/blob/main/images/Rithanvoyde.jpg" alt="Rithan">
+          <h4>Rithan</h4>
+          <p>Founder & Creative Director</p>
+        </div>
+        <div class="team-member">
+          <img src="https://github.com/voydecompany/Voyde/blob/main/images/Rithikavoyde.jpg" alt="Rithika">
+          <h4>Rithika</h4>
+          <p>Co-Founder & Brand Strategist</p>
+        </div>
+        <div class="team-member">
+          <img src="https://via.placeholder.com/200x200.png?text=Alex" alt="Arun">
+          <h4>Arun</h4>
+          <p>Creative & Operations Consultant</p>
+        </div>
+      </div>
+    </section>
+    <!-- === End Team Section === -->
+
     <footer class="reveal">
-      © 2025 Voyde • Founder: Rithan • Co-Founder: Rithika
+      © 2025 Voyde • Rithan (Founder) • Rithika (Co Founder)
     </footer>
   </main>
 
