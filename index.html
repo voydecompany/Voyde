@@ -215,6 +215,11 @@
     .reveal.show { opacity:1; transform:none; }
 
     footer { padding:60px 20px; text-align:center; color:var(--muted); font-size:0.85rem; }
+    footer a:hover {
+      color: var(--text);
+      text-shadow: 0 0 6px var(--accent);
+    }
+
 
     @keyframes fadeUp {
       0% { opacity:0; transform:translateY(20px); }
@@ -387,6 +392,33 @@
     <footer class="reveal">
       © 2025 Voyde 
     </footer>
+    <footer class="reveal">
+  <div style="margin-bottom: 14px; text-align: center;">
+  <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: var(--text);">Contact</h3>
+  <div id="contact" class="contact-section section" 
+       style="display: flex; justify-content: center; gap: 16px;">
+    <a href="https://www.linkedin.com/in/voyde-company-68aa09391/" target="_blank" 
+       style="color: var(--text); text-decoration: none; opacity: 0.8; transition: 0.3s;">LinkedIn</a>
+    <a href="mailto:voydecompany@gmail.com" 
+       style="color: var(--text); text-decoration: none; opacity: 0.8; transition: 0.3s;">Gmail</a>
+    <a href="https://www.instagram.com/voydecompany/" target="_blank" 
+       style="color: var(--text); text-decoration: none; opacity: 0.8; transition: 0.3s;">Instagram</a>
+  </div>
+</div>
+
+<style>
+  #contact a:hover {
+    opacity: 1;
+    color: var(--accent, #7cd3ff); /* accent color hover */
+  }
+</style>
+
+  </div>
+  <div style="margin-top: 20px; color: var(--muted); font-size: 0.85rem;">
+    © 2025 Voyde
+  </div>
+</footer>
+
   </main>
 
   <script>
