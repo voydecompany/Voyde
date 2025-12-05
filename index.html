@@ -268,6 +268,55 @@
       color: var(--text);
       text-shadow: 0 0 6px var(--accent);
     }
+    
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+    
+    .modal-content {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--backdrop);
+      width: 85%;
+      max-width: 600px;
+      padding: 20px;
+      border-radius: 20px;
+      animation: pop 0.3s ease;
+      text-align: center;
+    }
+    
+    .modal-content img {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 15px;
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--text);
+      transition: 0.2s;
+    }
+    
+    .close-btn:hover {
+      color: var(--accent);
+    }
+    
+    @keyframes pop {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
 
 
     @keyframes fadeUp {
@@ -431,7 +480,7 @@
                 <h4>Buisness card - Voyde</h4>
             </div>
             <div class="work-item">
-                <img src="Brown and White Organic Illustrative Coffee Company Trifold Brochure" alt="Project 5">
+                <img src="Brown and White Organic Illustrative Coffee Company Trifold Brochure.jpg" alt="Project 5">
                 <h4>Menu/Brochure - Bean Brewer</h4>
             </div>
             <div class="work-item">
@@ -444,6 +493,15 @@
             <h4>Handy Promotional card - Red dragon Food Truck</h4>
             </div>
         </div>
+        <div id="previewModal" class="modal">
+          <div class="modal-content">
+            <span class="close-btn" onclick="closePreview()">×</span>
+            <img id="previewImg" src="" alt="">
+            <h3 id="previewTitle"></h3>
+            <p id="previewDesc"></p>
+          </div>
+        </div>
+
     </section>
     
     <section id="nixie" class="reveal">
@@ -556,5 +614,17 @@
     },{threshold:0.15});
     reveals.forEach(r=>observer.observe(r));
   </script>
+  <script>
+    function openPreview(img, title, desc) {
+      document.getElementById("previewImg").src = img;
+      document.getElementById("previewTitle").innerText = title;
+      document.getElementById("previewDesc").innerText = desc;
+      document.getElementById("previewModal").style.display = "flex";
+    }
+    function closePreview() {
+      document.getElementById("previewModal").style.display = "none";
+    }
+  </script>
+
 </body>
 </html>
