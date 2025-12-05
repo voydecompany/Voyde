@@ -131,6 +131,55 @@
     }
     .theme-toggle:hover { transform:scale(1.05); box-shadow:0 0 10px var(--accent); }
 
+
+
+    .work-scroller {
+    display: flex;
+    gap: 40px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    }
+    .work-scroller::-webkit-scrollbar {
+    display: none;
+    }
+
+    .work-item {
+    flex: 0 0 auto;
+    width: 320px;
+    scroll-snap-align: center;
+    text-align: left;
+    }
+
+    .work-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass);
+    backdrop-filter: var(--backdrop);
+    transition: transform .4s ease, box-shadow .4s ease;
+    }
+
+    .work-item img:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 20px var(--accent);
+    }
+
+    .work-item h4 {
+    margin: 12px 0 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    }
+
+    .work-item p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.4;
+    }
+
     .mobile-menu {
       display:none;
       position:fixed; top:var(--nav-h); right:16px;
@@ -323,6 +372,32 @@
         </div>
       </div>
     </section>
+
+    <section id="works" class="reveal">
+        <h2 class="section-title">Works</h2>
+        <p class="lead">A few things we’ve crafted — scroll sideways to explore.</p>
+        
+        <div class="work-scroller">
+            <div class="work-item">
+                <img src="https://via.placeholder.com/600x400" alt="Project 1">
+                <h4>Business card - Aerostellar</h4>
+            </div>
+            <div class="work-item">
+                <img src="https://via.placeholder.com/600x400" alt="Project 2">
+                <h4>Buisness card - Voyde</h4>
+            </div>
+            <div class="work-item">
+                <img src="https://via.placeholder.com/600x400" alt="Project 3">
+                <h4>Brand identity - LVSK Martialarts School</h4>
+            </div>
+
+            <div class="work-item">
+            <img src="https://via.placeholder.com/600x400" alt="Project 4">
+            <h4>Handy Promotional card - Red dragon Food Truck</h4>
+            </div>
+        </div>
+        </section>
+
 
     <section id="about" class="reveal">
       <h2 class="section-title">About Voyde</h2>
