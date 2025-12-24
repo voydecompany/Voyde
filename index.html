@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyde | Everything from nothing</title>
+    <meta name="description"
+        content="Voyde is a premium design and business strategy agency specializing in brand identity, websites, and visual collateral. Founded by Rithan.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor" class="cursor"></div>
+    <div id="cursor-follower" class="cursor-follower"></div>
+
+    <!-- Preloader -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <span class="loader-logo">VOYDE</span>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">VOYDE</a>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Shell -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-bg">
+                <div class="gradient-sphere"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="reveal-text">Everything from <span class="accent-text">nothing.</span></h1>
+                    <p class="reveal-text-sub">Voyde is a high-end creative studio crafting intentional brand
+                        identities, digital experiences, and strategic visual collateral for those who demand
+                        excellence.</p>
+                    <div class="hero-cta reveal-item">
+                        <a href="#work" class="btn btn-primary">View Our Work</a>
+                        <a href="#contact" class="btn btn-outline">Start a Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <span>Scroll to explore</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- Featured Work Section -->
+        <section id="work" class="work">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Selected Works</span>
+                    <h2>Featured Projects</h2>
+                </div>
+                <div class="work-slider-container">
+                    <div class="work-slider">
+                        <!-- Website Project -->
+                        <div class="work-item" data-type="website" data-url="https://voyde.com">
+                            <div class="work-card">
+                                <div class="work-image-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563cc4c?q=80&w=2070&auto=format&fit=crop"
+                                        alt="Lumina Website">
+                                    <div class="work-overlay">
+                                        <span>Visit Live Website</span>
+                                    </div>
+                                </div>
+                                <div class="work-info">
+                                    <h3>Lumina Digital Experience</h3>
+                                    <p>Premium Design Portfolio</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Website Project -->
+                        <div class="work-item" data-type="website" data-url="https://voyde.com">
+                            <div class="work-card">
+                                <div class="work-image-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
+                                        alt="Nexus Hub">
+                                    <div class="work-overlay">
+                                        <span>Visit Live Website</span>
+                                    </div>
+                                </div>
+                                <div class="work-info">
+                                    <h3>Nexus Infrastructure</h3>
+                                    <p>Scalable Web Architecture</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Collateral Project -->
+                        <div class="work-item" data-type="collateral"
+                            data-image="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2071&auto=format&fit=crop">
+                            <div class="work-card">
+                                <div class="work-image-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2071&auto=format&fit=crop"
+                                        alt="Visual Identity">
+                                    <div class="work-overlay">
+                                        <span>View Full Image</span>
+                                    </div>
+                                </div>
+                                <div class="work-info">
+                                    <h3>Quantum Visuals</h3>
+                                    <p>Brand Collateral</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Website Project 3 -->
+                        <div class="work-item" data-type="website" data-url="https://voyde.com">
+                            <div class="work-card">
+                                <div class="work-image-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1802&auto=format&fit=crop"
+                                        alt="Strategy Hub">
+                                    <div class="work-overlay">
+                                        <span>Visit Live Website</span>
+                                    </div>
+                                </div>
+                                <div class="work-info">
+                                    <h3>Stellar Strategy</h3>
+                                    <p>Business Consulting</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="services-wrapper">
+                    <div class="services-left">
+                        <span class="section-tag">Expertise</span>
+                        <h2>The Alchemy of Creation</h2>
+                        <p>We transform raw vision into tangible prestige. Our services are tailored for brands that
+                            seek to transcend the ordinary.</p>
+                    </div>
+                    <div class="services-right">
+                        <div class="service-item">
+                            <span class="service-num">01</span>
+                            <h3>Brand Identity</h3>
+                            <p>Defining the soul of your brand through minimalist storytelling and timeless aesthetic
+                                principles.</p>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-num">02</span>
+                            <h3>Websites</h3>
+                            <p>High-performance digital canvases built with precision, speed, and immersive motion
+                                design.</p>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-num">03</span>
+                            <h3>Visual Collateral</h3>
+                            <p>Consistent, high-end assets that reinforce your brand across every touchpoint.</p>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-num">04</span>
+                            <h3>Business Support</h3>
+                            <p>Strategic consultation and operational elegance to help you scale without losing soul.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
+                            alt="Rithan - Founder of Voyde">
+                    </div>
+                    <div class="about-content">
+                        <span class="section-tag">The Vision</span>
+                        <h2>Founded by Rithan.</h2>
+                        <p>Voyde was born from a simple belief: that excellence requires intention. Based in Trichy, we
+                            operate globally, helping visionaries build everything from nothing.</p>
+                        <p>We don't just design; we architect perceptions. Every pixel, every curve, and every strategy
+                            is deliberate.</p>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <span class="stat-value">50+</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">Dedication</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-card">
+                    <div class="contact-info">
+                        <h2>Ready to evolve?</h2>
+                        <p>Let's discuss how we can bring your next vision to life.</p>
+                        <div class="contact-details">
+                            <a href="mailto:voydecompany@gmail.com">voydecompany@gmail.com</a>
+                            <a href="tel:+918438623429">+91 8438623429</a>
+                            <p>Trichy, India</p>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Tell us about your project" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <a href="#" class="footer-logo">VOYDE</a>
+                <div class="footer-socials">
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VOYDE. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
