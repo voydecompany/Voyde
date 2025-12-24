@@ -570,13 +570,10 @@ nav.scrolled {
     background: var(--surface-color);
     overflow: hidden;
     max-width: 400px;
+    border-radius: 25px; 
     /* Reduced specific size */
 }
-
-.rounded-corners {
-  border-radius: 25px; /* Adjust the value for desired roundness */
-}
-
+  
 .about-image img {
     width: 100%;
     height: 100%;
