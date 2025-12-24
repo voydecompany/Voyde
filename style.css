@@ -570,7 +570,7 @@ nav.scrolled {
     background: var(--surface-color);
     overflow: hidden;
     max-width: 400px;
-    border-radius: 25px; 
+    border-radius: 35px; 
     /* Reduced specific size */
 }
   
