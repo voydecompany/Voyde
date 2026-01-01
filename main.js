@@ -297,33 +297,4 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === modal) closeModal();
         });
     }
-
-    
-    const form = document.querySelector("form");
-    
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-    
-      const formData = new FormData(form);
-    
-      const data = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        message: formData.get("message")
-      };
-    
-      fetch("https://script.google.com/macros/s/AKfycbyhgCZNhBGLcsGHvDbBGFCjbzDl3b_eooQ2khLgftzsQlFu1R_DOE42ieRQpiQ24NV5EA/exec", {
-        method: "POST",
-        body: JSON.stringify(data)
-      })
-      .then(() => {
-        alert("Message sent successfully!");
-        form.reset();
-      })
-      .catch(() => {
-        alert("Something went wrong");
-      });
-    });
-
-
 });
