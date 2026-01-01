@@ -298,25 +298,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. Form Submission
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('button');
-            const originalText = btn.innerText;
+    
+    const form = document.querySelector("form");
+    
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+    
+      const formData = new FormData(form);
+    
+      const data = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message")
+      };
+    
+      fetch("https://script.google.com/macros/s/AKfycbyhgCZNhBGLcsGHvDbBGFCjbzDl3b_eooQ2khLgftzsQlFu1R_DOE42ieRQpiQ24NV5EA/exec", {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        alert("Message sent successfully!");
+        form.reset();
+      })
+      .catch(() => {
+        alert("Something went wrong");
+      });
+    });
 
-            btn.innerText = 'Sending...';
-            btn.disabled = true;
 
-            setTimeout(() => {
-                btn.innerText = 'Message Sent';
-                contactForm.reset();
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.disabled = false;
-                }, 3000);
-            }, 1500);
-        });
-    }
 });
