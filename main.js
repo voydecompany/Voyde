@@ -4,21 +4,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // ------------------------------------------------------------------
     const loader = document.getElementById('loader');
     if (loader) {
+        // Initial Loading Animation
+        const tl = gsap.timeline();
+
+        // Reveal Logo and Load Bar
+        tl.to('.loader-logo', {
+            opacity: 1,
+            duration: 1,
+            ease: 'power2.out'
+        })
+            .to('.loader-bar', {
+                width: '100%',
+                duration: 1.5,
+                ease: 'power1.inOut'
+            });
+
+        // Hide Loader when page is fully loaded AND animation is done
         window.addEventListener('load', () => {
-            gsap.to(loader, {
+            tl.to(loader, {
                 opacity: 0,
-                duration: 1,
+                duration: 0.8,
                 ease: 'power2.inOut',
+                delay: 0.5, // Slight pause at 100%
                 onComplete: () => loader.style.display = 'none'
             });
         });
 
-        // Fallback safety
+        // Fallback safety (if load event hangs)
         setTimeout(() => {
             if (loader.style.display !== 'none') {
                 gsap.to(loader, {
                     opacity: 0,
-                    duration: 1,
+                    duration: 0.8,
                     ease: 'power2.inOut',
                     onComplete: () => loader.style.display = 'none'
                 });
