@@ -30,6 +30,63 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    /* Remove mobile tap highlight */
+}
+
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Behind content, ahead of base bg */
+    pointer-events: none;
+    /* Let clicks pass through, but we can still track mouse in JS */
+}
+
+/* Noise Overlay - Adds texture/life */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9000;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Background Ambient Pulse - "Alive" feel */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.03), transparent 60%);
+    z-index: -1;
+    animation: ambient-pulse 10s infinite ease-in-out;
+}
+
+@keyframes ambient-pulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
 }
 
 .container {
@@ -377,112 +434,108 @@ nav.scrolled {
 
 /* Work Section */
 .work {
-    padding: 100px 0;
+    padding: 120px 0;
+    overflow: hidden;
+    position: relative;
     background: var(--bg-color);
 }
 
-.section-header {
-    margin-bottom: 80px;
-}
-
-.section-header h2 {
-    font-size: clamp(32px, 5vw, 60px);
-}
-
-/* Work Section Slider */
 .work-slider-container {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    overflow: hidden;
-    position: relative;
-    padding: 20px 0;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 20px 0 60px;
+    /* Space for shadow/interaction */
+    cursor: grab;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
 }
 
-.work-item {
-    width: 350px;
-    flex-shrink: 0;
+/* Hide scrollbar */
+.work-slider-container::-webkit-scrollbar {
+    display: none;
+}
+
+.work-slider-container:active {
+    cursor: grabbing;
 }
 
 .work-slider {
     display: flex;
-    gap: 30px;
+    gap: 60px;
+    padding: 0 max(40px, calc((100vw - 1400px) / 2));
+    /* Center starting point */
     width: max-content;
-    padding: 0 40px;
-}
-
-.work-image-wrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    border-radius: 4px;
-    background: var(--surface-color);
 }
 
 .work-card {
+    display: block;
+    width: 450px;
+    flex-shrink: 0;
+    text-decoration: none;
     position: relative;
-    cursor: pointer;
-    transition: var(--transition-smooth);
+    /* Group for hover effects */
 }
 
-/* Image Modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 10001;
-    top: 0;
-    left: 0;
+.work-image-wrapper {
+    width: 100%;
+    aspect-ratio: 16/9;
+    /* Standard screenshot ratio */
+    background: #000;
+    /* Dark background to frame contained images */
+    overflow: hidden;
+    margin-bottom: 25px;
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.work-image-wrapper img {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(10px);
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.modal.active {
-    display: flex;
+    object-fit: contain;
+    /* Shows full image */
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     opacity: 1;
+    /* Keep fully visible for clarity */
 }
 
-.modal-content {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 4px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-    transform: scale(0.9);
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+.work-card:hover .work-image-wrapper img {
+    transform: scale(1.02);
 }
 
-.modal.active .modal-content {
-    transform: scale(1);
+.work-info h3 {
+    font-size: 28px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-weight: 500;
 }
 
-.modal-close {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: 300;
-    cursor: pointer;
-    transition: var(--transition-smooth);
-}
-
-.modal-close:hover {
-    transform: rotate(90deg);
-    color: var(--accent-color);
+.work-info p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 @media (max-width: 768px) {
-    .work-item {
-        width: 250px;
+    .work-slider {
+        gap: 30px;
+        padding: 0 30px;
     }
 
-    .work-slider {
-        gap: 20px;
+    .work-card {
+        width: 300px;
+    }
+
+    .work-image-wrapper {
+        margin-bottom: 15px;
+    }
+
+    .work-info h3 {
+        font-size: 22px;
     }
 }
 
@@ -520,10 +573,33 @@ nav.scrolled {
     flex: 1.5;
 }
 
+/* Service Items */
 .service-item {
     padding: 40px 0;
     border-bottom: 1px solid var(--border-color);
-    transition: var(--transition-smooth);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.04), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.service-item:hover::before,
+.service-item.active::before {
+    opacity: 1;
 }
 
 .service-item:first-child {
@@ -531,25 +607,130 @@ nav.scrolled {
 }
 
 .service-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
     padding-left: 20px;
 }
 
-.service-num {
-    display: block;
-    font-size: 14px;
-    color: var(--accent-color);
-    margin-bottom: 20px;
-    font-weight: 600;
+.service-item.active {
+    border-color: var(--accent-color);
+    background: rgba(99, 102, 241, 0.03);
+    padding-left: 20px;
+}
+
+.service-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Aligns title and button */
+    position: relative;
+    z-index: 1;
 }
 
 .service-item h3 {
     font-size: 32px;
-    margin-bottom: 15px;
+    margin-bottom: 0;
+    flex: 1;
+    transition: color 0.3s ease;
 }
 
-.service-item p {
+.service-item:hover h3,
+.service-item.active h3 {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.service-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    margin-left: 20px;
+}
+
+.service-item:hover .service-toggle,
+.service-item.active .service-toggle {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: rotate(90deg);
+}
+
+.service-item.active .service-toggle {
+    transform: rotate(135deg);
+    /* Make it look like an X when open */
+}
+
+.service-item>p {
     color: var(--text-secondary);
     max-width: 500px;
+    margin-bottom: 0;
+    margin-top: 15px;
+    transition: var(--transition-smooth);
+    position: relative;
+    z-index: 1;
+}
+
+.service-item.active>p {
+    margin-bottom: 20px;
+}
+
+/* Service Details (Hidden by default) */
+.service-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.service-item.active .service-details {
+    max-height: 500px;
+    /* Arbitrary large height for animation */
+    opacity: 1;
+}
+
+.service-details ul {
+    list-style: none;
+    padding-left: 20px;
+    border-left: 1px solid var(--border-color);
+    margin-top: 10px;
+}
+
+.service-details li {
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 15px;
+    font-size: 16px;
+    transition: var(--transition-smooth);
+}
+
+.service-details li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 1px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.service-details li:hover {
+    color: var(--text-primary);
+    transform: translateX(5px);
+}
+
+.service-details li:hover::before {
+    width: 12px;
 }
 
 /* About Section */
@@ -570,10 +751,10 @@ nav.scrolled {
     background: var(--surface-color);
     overflow: hidden;
     max-width: 400px;
-    border-radius: 35px; 
+    border-radius: 35px;
     /* Reduced specific size */
 }
-  
+
 .about-image img {
     width: 100%;
     height: 100%;
