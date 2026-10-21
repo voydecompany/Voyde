@@ -389,18 +389,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Image Reveal
-    gsap.utils.toArray('.about-image, .work-image-wrapper').forEach(img => {
-        gsap.from(img, {
-            scrollTrigger: {
-                trigger: img,
-                start: 'top 80%',
-            },
-            scale: 0.9,
-            opacity: 0,
-            duration: 1.2,
-            ease: 'power3.out'
-        });
-    });
+    //gsap.utils.toArray('.about-image, .work-image-wrapper').forEach(img => {
+        //gsap.from(img, {
+            //scrollTrigger: {
+                //trigger: img,
+                //start: 'top 80%',
+            //},
+            //scale: 0.9,
+            //opacity: 0,
+            //duration: 1.2,
+            //ease: 'power3.out'
+        //});
+    //});
 
     // About Content Paragraphs
     gsap.utils.toArray('.about-content p').forEach(p => {
